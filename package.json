@@ -10,7 +10,7 @@
     "coverage": "istanbul cover --print both _mocha -- -R spec",
     "test": "npm run eslint && npm run coverage"
   },
-  "author": "",
+  "author": "Marcus Costa",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^3.19.0",
