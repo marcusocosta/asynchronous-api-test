@@ -1,0 +1,80 @@
+{
+  "id": "testSchema",
+  "description": "Sets the test schema",
+  "required": [
+    "description",
+    "filter"
+  ],
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "filters": {
+      "type": "object"
+    },
+    "input": {
+      "required": [
+        "method",
+        "url"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "get",
+            "post",
+            "put",
+            "delete",
+            "put"
+          ]
+        },
+        "url": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "array"
+        },
+        "authorization": {
+          "type": "string"
+        },
+        "body": {
+          "type": "object"
+        }
+      }
+    },
+    "expected": {
+      "type": "array",
+      "required": [
+        "identifyField",
+        "assert"
+      ],
+      "properties": {
+        "identifyField": {
+          "type": "object"
+        },
+        "assert": {
+          "type": "object",
+          "properties": {
+            "hasProperties": {
+              "type": "array"
+            },
+            "hasValues": {
+              "type": "array",
+              "required": [
+                "property",
+                "value"
+              ],
+              "properties": {
+                "property": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
