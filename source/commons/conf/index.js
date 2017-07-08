@@ -3,6 +3,6 @@ const nconf = require('nconf');
 
 nconf.argv()
   .env()
-  .file({ file: `${ROOT_PATH}/config/authorization-api.json` });
+  .file({ file: `${ROOT_PATH}/config/asynchronous-api-test.json` });
 
 module.exports = nconf;
