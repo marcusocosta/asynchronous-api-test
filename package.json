@@ -1,0 +1,20 @@
+{
+  "name": "asynchronous-api-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mocha": "./node_modules/mocha/bin/mocha",
+    "eslint": "eslint lib/* test/*.js test/**/* index.js",
+    "start": "node index.js",
+    "coverage": "istanbul cover --print both _mocha -- -R spec",
+    "test": "npm run eslint && npm run coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
