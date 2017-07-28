@@ -1,22 +1,21 @@
 
 var later = require('later');
 const services = require('../services');
+const executionServices = require('../../executions/services');
 
 module.exports = (req, res) => {
 
   services.createTest(req.body, (err, resCreate) => {
+    console.log(resCreate);
     if (err) {
       res.sendStatus(500);
     } else {
-      res.sendStatus(201);
+      executionServices.createExecution(resCreate, (err, resExecution) => {
+        if(err) {
+          return res.sendStatus(500);
+        }
+        res.sendStatus(201);
+      });
     }
   });
-
 };
-
-  // var text = 'at 08:00pm';
-  // var s = later.parse.text(text);
-
-  // const o = later.schedule(s).prev(5);
-
-  // console.log(o);
