@@ -3,7 +3,8 @@
   "description": "Sets the test schema",
   "required": [
     "description",
-    "filter"
+    "filters",
+    "input"
   ],
   "properties": {
     "description": {
@@ -22,9 +23,7 @@
           "enum": [
             "get",
             "post",
-            "put",
-            "delete",
-            "put"
+            "delete"
           ]
         },
         "url": {

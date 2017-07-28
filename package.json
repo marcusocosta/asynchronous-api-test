@@ -13,9 +13,15 @@
   "author": "Marcus Costa",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.1.0",
+    "chance": "^1.0.10",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.7.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "sinon": "^2.4.1",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
