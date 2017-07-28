@@ -27,6 +27,7 @@
     "body-parser": "^1.17.2",
     "compression": "^1.6.2",
     "express": "^4.15.3",
+    "later": "^1.2.0",
     "mongodb": "^2.2.30",
     "nconf": "^0.8.4",
     "tv4": "^1.3.0",
