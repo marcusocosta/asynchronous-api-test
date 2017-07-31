@@ -4,7 +4,7 @@ const moment = require('moment');
 
 module.exports = (when) => {
   const s = later.parse.text(when);
-  const date = later.schedule(s).prev(1);
+  const date = later.schedule(s).next(1);
   if (date) {
     return date;
   } else {

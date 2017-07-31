@@ -7,6 +7,8 @@ before((done) => {
 
 after((done) => {
   db.getCollection('tests').remove({}, () => {
-    db.close(done);
+    db.getCollection('executions').remove({}, () => {
+      db.close(done);
+    });
   });
 });
