@@ -128,30 +128,14 @@ describe('Teste de contrato da rota /tests', () => {
       });
   });
 
-  it('Deve retornar formato de requisição inválido quando não for informado o campo execution', (done) => {
+  it('Deve retornar formato de requisição inválido quando não for informado o campo when', (done) => {
     const data = testFixture({ filters: { experience: 'teste-teste' } });
-    data.execution = undefined;
+    data.when = undefined;
 
     request(app)
       .post('/tests')
       .send(data)
       .expect('Content-Type', /json/)
-      .expect(400)
-      .end((err, res) => {
-        const body = res.body;
-        assert.isNull(err);
-
-        assert.equal('Formato de requisição inválido!', body.message);
-        done();
-      });
-  });
-
-  it('1', (done) => {
-    const data = testFixture({ filters: { experience: 'teste-teste' } });
-
-    request(app)
-      .post('/tests')
-      .send(data)
       .expect(400)
       .end((err, res) => {
         const body = res.body;

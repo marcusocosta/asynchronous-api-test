@@ -3,7 +3,7 @@
 //   "filters": {
 //     "experience": "casa-venda-os-novos-produtos"
 //   },
-//   "execution": "at 08:00am",
+//   "when": "at 08:00am",
 //   "input": {
 //     "method": "post",
 //     "url": "https://localhost:5066/experiences/casa-venda-os-novos-produtos/triggers",

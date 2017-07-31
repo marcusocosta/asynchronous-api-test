@@ -5,13 +5,13 @@
     "description",
     "filters",
     "input",
-    "execution"
+    "when"
   ],
   "properties": {
     "description": {
       "type": "string"
     },
-    "execution": {
+    "when": {
       "type": "string"
     },
     "filters": {
