@@ -3,6 +3,7 @@ const app = require('./source/application');
 const logger = require('./source/commons/logger');
 const conf = require('./source/commons/conf');
 const db = require('./source/commons/db');
+const execution = require('./source/executions');
 
 const appPort = conf.get('APP_PORT');
 
@@ -10,6 +11,8 @@ const shutdown = () => {
   logger.warn('Server receive signal to shutdown.');
   process.exit(0);
 };
+
+execution.init();
 
 process.on('SIGTERM', shutdown)
   .on('SIGINT', shutdown)

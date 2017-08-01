@@ -9,5 +9,5 @@ module.exports = (test, callback) => {
   obj.code = uuidv4();
   obj.nextExecution = getNextExecution(test.when);
 
-  models.insertTest(obj, callback);
+  models.insert(obj, callback);
 };

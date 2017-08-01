@@ -1,20 +1,12 @@
 
 
-const uuidv4 = require('uuid/v4');
 const models = require('../execution-models');
+const buildExecutions = require('./build-executions');
 
 module.exports = (test, callback) => {
-  let obj = test;
-  obj.testCode = test.code;
-  obj.code = uuidv4();
 
-  models.insertExecution(obj, callback);
+
+  const executions = buildExecutions(test);
+console.log(executions);
+  models.insertExecution(executions, callback);
 };
-
-
-  // var text = 'at 08:00pm';
-  // var s = later.parse.text(text);
-
-  // const o = later.schedule(s).prev(5);
-
-  // console.log(o);
