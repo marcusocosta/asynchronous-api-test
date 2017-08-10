@@ -1,33 +1,18 @@
-const services = require('./services')
 const async = require('async');
+const services = require('./services');
+const logger = require('../commons/logger');
 
-const processNextExecutions = (next) => {
-  services.findNextExecutions((err, tests) => {
-    async.each(tests, function (test, callback) {
-      services.createExecution(test, callback);
-    }, function (err) {
-      if (err) {
-        console.log('A file failed to process');
-      }
-      next(err);
-    });
-  });
-};
+module.exports = (test, next) => {
+  const testObj = test;
 
-const init = () => {
-  async.forever(
-    function (next) {
-      setTimeout(() => {
-        processNextExecutions(next);
-      }, 10000);
+  async.waterfall([
+    (callback) => {
+      services.sendRequest(testObj.input.request, callback);
     },
-    function (err) {
-      // if next is called with a value in its first parameter, it will appear
-      // in here as 'err', and execution will stop.
+  ], (err, result) => {
+    if (err) {
+      logger.error('Não foi possível executar o test: %j o problema encontrado foi: %s', testObj, err);
     }
-  );
-};
-
-module.exports = {
-  init,
+    next(err, result);
+  });
 };

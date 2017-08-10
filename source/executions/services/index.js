@@ -1,9 +1,5 @@
-
-const createExecution = require('./create-execution');
-const findNextExecutions = require('./find-next-executions');
-
+const sendRequest = require('./send-request');
 
 module.exports = {
-  createExecution,
-  findNextExecutions,
-}
+  sendRequest,
+};
