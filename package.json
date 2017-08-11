@@ -28,6 +28,7 @@
     "chai": "^4.1.0",
     "compression": "^1.6.2",
     "express": "^4.15.3",
+    "handlebars": "^4.0.10",
     "later": "^1.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",

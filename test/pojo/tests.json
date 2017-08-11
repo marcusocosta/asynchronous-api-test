@@ -4,6 +4,16 @@
 //     "experience": "casa-venda-os-novos-produtos"
 //   },
 //   "input": {
+//     "customFields": [
+//       {
+//         "name": "mobile",
+//         "type": "mobile"
+//       },
+//       {
+//         "name": "amount",
+//         "value": 1
+//       }
+//     ],
 //     "request": {
 //       "method": "post",
 //       "url": "https://localhost:5066/experiences/casa-venda-os-novos-produtos/triggers",
@@ -25,20 +35,6 @@
 //         }
 //       }
 //     },
-//     "customFields": [
-//       {
-//         "name": "mobile",
-//         "type": "mobile"
-//       },
-//       {
-//         "name": "amount",
-//         "value": 1
-//       },
-//       {
-//         "name": "requestId",
-//         "value": "request.data._id"
-//       }
-//     ],
 //     "asserts": {
 //       "hasProperties": [
 //         "data.fowordedValue",
@@ -56,5 +52,53 @@
 //         }
 //       ]
 //     }
-//   }
+//   },
+//   "expected": [
+//     {
+//       "identifyFields": {
+//         "event": "done-batch-line",
+//         "requestId": "{{requestId}}"
+//       },
+//       "asserts": {
+//         "hasProperties": [
+//           "data.fowordedValue",
+//           "data.delivered.value",
+//           "data.data.dataMovto"
+//         ],
+//         "hasValues": [
+//           {
+//             "property": "data.data.dataMovto",
+//             "value": "{{input.body.data.dataMovto}}"
+//           },
+//           {
+//             "property": "data.fowordedValueo",
+//             "value": 1
+//           }
+//         ]
+//       }
+//     },
+//     {
+//       "identifyFields": {
+//         "event": "done-request",
+//         "requestId": "{{requestId}}"
+//       },
+//       "asserts": {
+//         "hasProperties": [
+//           "data.fowordedValue",
+//           "data.delivered.value",
+//           "data.data.dataMovto"
+//         ],
+//         "hasValues": [
+//           {
+//             "property": "data.data.dataMovto",
+//             "value": "{{input.body.data.dataMovto}}"
+//           },
+//           {
+//             "property": "data.fowordedValueo",
+//             "value": 1
+//           }
+//         ]
+//       }
+//     }
+//   ]
 // }
