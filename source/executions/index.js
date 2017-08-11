@@ -12,7 +12,8 @@ module.exports = (test, next) => {
   ], (err, result) => {
     if (err) {
       logger.error('Não foi possível executar o test: %j o problema encontrado foi: %s', testObj, err);
+      return next(err, null);
     }
-    next(err, result);
+    next(null, result);
   });
 };

@@ -8,16 +8,15 @@ module.exports = (requestParams, callback) => {
     headers: requestParams.headers,
     authorization: requestParams.authorization,
     body: requestParams.body,
+    json: true,
   };
 
-  request(requestConfig, (error, response, body) => {
+  request(requestConfig, (error, response) => {
     if (error) {
       logger.error('Não foi possível fazer a requisição: %j', requestConfig);
-      return callback(error);
+      return callback(error, null);
     }
 
-    console.log(body);
-
-    callback(null, body);
+    callback(null, response.body);
   });
 };
