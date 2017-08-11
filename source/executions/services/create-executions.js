@@ -6,9 +6,10 @@ module.exports = (test, requestResult) => {
     const executionCode = uuidv4();
     return test.expected.map(exp => ({
       code: executionCode,
+      filters: test.filters,
       test: {
-        testCode: exp.code,
-        description: exp.description,
+        testCode: test.code,
+        description: test.description,
       },
       identifyFields: applyFields(exp.identifyFields, requestResult),
       asserts: exp.asserts,

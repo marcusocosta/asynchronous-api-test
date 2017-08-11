@@ -93,6 +93,9 @@ describe('Execution test functional test', () => {
     const test = {
       code: '347023rewhfjdf32043y4832840',
       description: 'Teste de sucesso',
+      filters: {
+        experience: 'casa-venda-os-novos-produtos',
+      },
       input: {
         request: {
           method: 'post',
@@ -178,7 +181,6 @@ describe('Execution test functional test', () => {
     execution(test, (err, res) => {
       assert.isNull(err);
       assert.isNotNull(res);
-
       assert.equal(res.length, 2);
       done();
     });
