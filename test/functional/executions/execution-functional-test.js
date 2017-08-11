@@ -91,6 +91,8 @@ describe('Execution test functional test', () => {
 
   it('Deve retornar as execuções quando for possível criá-las', (done) => {
     const test = {
+      code: '347023rewhfjdf32043y4832840',
+      description: 'Teste de sucesso',
       input: {
         request: {
           method: 'post',
