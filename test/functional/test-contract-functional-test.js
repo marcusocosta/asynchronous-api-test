@@ -9,7 +9,6 @@ describe('Teste de contrato da rota /tests', () => {
   it('Deve retornar formato de requisição inválido quando não for passado o body da requisição', (done) => {
     request(app)
       .post('/tests')
-      .expect('Content-Type', /json/)
       .expect(400)
       .end((err, res) => {
         const body = res.body;
@@ -27,7 +26,6 @@ describe('Teste de contrato da rota /tests', () => {
     request(app)
       .post('/tests')
       .send(data)
-      .expect('Content-Type', /json/)
       .expect(400)
       .end((err, res) => {
         const body = res.body;
@@ -45,7 +43,6 @@ describe('Teste de contrato da rota /tests', () => {
     request(app)
       .post('/tests')
       .send(data)
-      .expect('Content-Type', /json/)
       .expect(400)
       .end((err, res) => {
         const body = res.body;
@@ -63,7 +60,6 @@ describe('Teste de contrato da rota /tests', () => {
     request(app)
       .post('/tests')
       .send(data)
-      .expect('Content-Type', /json/)
       .expect(400)
       .end((err, res) => {
         const body = res.body;
@@ -76,12 +72,11 @@ describe('Teste de contrato da rota /tests', () => {
 
   it('Deve retornar formato de requisição inválido quando não for passado a campo input.url', (done) => {
     const data = testFixture({ filters: { experience: 'teste-teste' } });
-    data.input.url = undefined;
+    data.input.request.url = undefined;
 
     request(app)
       .post('/tests')
       .send(data)
-      .expect('Content-Type', /json/)
       .expect(400)
       .end((err, res) => {
         const body = res.body;
@@ -94,12 +89,11 @@ describe('Teste de contrato da rota /tests', () => {
 
   it('Deve retornar formato de requisição inválido quando não for passado a campo input.method', (done) => {
     const data = testFixture({ filters: { experience: 'teste-teste' } });
-    data.input.method = undefined;
+    data.input.request.method = undefined;
 
     request(app)
       .post('/tests')
       .send(data)
-      .expect('Content-Type', /json/)
       .expect(400)
       .end((err, res) => {
         const body = res.body;
@@ -112,30 +106,11 @@ describe('Teste de contrato da rota /tests', () => {
 
   it('Deve retornar formato de requisição inválido quando o method não for GET, POST, DELETE', (done) => {
     const data = testFixture({ filters: { experience: 'teste-teste' } });
-    data.input.method = 'upa';
+    data.input.request.method = 'upa';
 
     request(app)
       .post('/tests')
       .send(data)
-      .expect('Content-Type', /json/)
-      .expect(400)
-      .end((err, res) => {
-        const body = res.body;
-        assert.isNull(err);
-
-        assert.equal('Formato de requisição inválido!', body.message);
-        done();
-      });
-  });
-
-  it('Deve retornar formato de requisição inválido quando não for informado o campo when', (done) => {
-    const data = testFixture({ filters: { experience: 'teste-teste' } });
-    data.when = undefined;
-
-    request(app)
-      .post('/tests')
-      .send(data)
-      .expect('Content-Type', /json/)
       .expect(400)
       .end((err, res) => {
         const body = res.body;

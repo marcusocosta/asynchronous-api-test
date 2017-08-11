@@ -1,104 +1,104 @@
-{
-  "description": "Teste assincrono",
-  "filters": {
-    "experience": "casa-venda-os-novos-produtos"
-  },
-  "input": {
-    "customFields": [
-      {
-        "name": "mobile",
-        "type": "mobile"
-      },
-      {
-        "name": "amount",
-        "value": 1
-      }
-    ],
-    "request": {
-      "method": "post",
-      "url": "https://localhost:5066/experiences/casa-venda-os-novos-produtos/triggers",
-      "headers": [
-        {
-          "name": "content-type",
-          "value": "application/json"
-        }
-      ],
-      "authorization": "bearer cr4ed04gty66ggvvvvvv",
-      "body": {
-        "event": "bonus-redeemed",
-        "data": {
-          "amount": 1,
-          "mobile": "5531987456321",
-          "status": "E",
-          "referrerCode": "020123456TALITA1",
-          "parentReferrerCode": "020123456TALITA1"
-        }
-      }
-    },
-    "asserts": {
-      "hasProperties": [
-        "data.fowordedValue",
-        "data.delivered.value",
-        "data.data.dataMovto"
-      ],
-      "hasValues": [
-        {
-          "property": "data.data.dataMovto",
-          "value": "{{input.body.data.dataMovto}}"
-        },
-        {
-          "property": "data.fowordedValueo",
-          "value": "1"
-        }
-      ]
-    }
-  },
-  "expected": [
-    {
-      "identifyFields": {
-        "event": "done-batch-line",
-        "requestId": "{{requestId}}"
-      },
-      "asserts": {
-        "hasProperties": [
-          "data.fowordedValue",
-          "data.delivered.value",
-          "data.data.dataMovto"
-        ],
-        "hasValues": [
-          {
-            "property": "data.data.dataMovto",
-            "value": "{{input.body.data.dataMovto}}"
-          },
-          {
-            "property": "data.fowordedValueo",
-            "value": 1
-          }
-        ]
-      }
-    },
-    {
-      "identifyFields": {
-        "event": "done-request",
-        "requestId": "{{requestId}}"
-      },
-      "asserts": {
-        "hasProperties": [
-          "data.fowordedValue",
-          "data.delivered.value",
-          "data.data.dataMovto"
-        ],
-        "hasValues": [
-          {
-            "property": "data.data.dataMovto",
-            "value": "{{input.body.data.dataMovto}}"
-          },
-          {
-            "property": "data.fowordedValueo",
-            "value": "1"
-          }
-        ]
-      }
-    }
-  ]
-}
+// {
+//   "description": "Teste assincrono",
+//   "filters": {
+//     "experience": "casa-venda-os-novos-produtos"
+//   },
+//   "input": {
+//     "customFields": [
+//       {
+//         "name": "mobile",
+//         "type": "mobile"
+//       },
+//       {
+//         "name": "amount",
+//         "value": 1
+//       }
+//     ],
+//     "request": {
+//       "method": "post",
+//       "url": "https://localhost:5066/experiences/casa-venda-os-novos-produtos/triggers",
+//       "headers": [
+//         {
+//           "name": "content-type",
+//           "value": "application/json"
+//         }
+//       ],
+//       "authorization": "bearer cr4ed04gty66ggvvvvvv",
+//       "body": {
+//         "event": "bonus-redeemed",
+//         "data": {
+//           "amount": 1,
+//           "mobile": "5531987456321",
+//           "status": "E",
+//           "referrerCode": "020123456TALITA1",
+//           "parentReferrerCode": "020123456TALITA1"
+//         }
+//       }
+//     },
+//     "asserts": {
+//       "hasProperties": [
+//         "data.fowordedValue",
+//         "data.delivered.value",
+//         "data.data.dataMovto"
+//       ],
+//       "hasValues": [
+//         {
+//           "property": "data.data.dataMovto",
+//           "value": "{{input.body.data.dataMovto}}"
+//         },
+//         {
+//           "property": "data.fowordedValueo",
+//           "value": "1"
+//         }
+//       ]
+//     }
+//   },
+//   "expected": [
+//     {
+//       "identifyFields": {
+//         "event": "done-batch-line",
+//         "requestId": "{{requestId}}"
+//       },
+//       "asserts": {
+//         "hasProperties": [
+//           "data.fowordedValue",
+//           "data.delivered.value",
+//           "data.data.dataMovto"
+//         ],
+//         "hasValues": [
+//           {
+//             "property": "data.data.dataMovto",
+//             "value": "{{input.body.data.dataMovto}}"
+//           },
+//           {
+//             "property": "data.fowordedValueo",
+//             "value": 1
+//           }
+//         ]
+//       }
+//     },
+//     {
+//       "identifyFields": {
+//         "event": "done-request",
+//         "requestId": "{{requestId}}"
+//       },
+//       "asserts": {
+//         "hasProperties": [
+//           "data.fowordedValue",
+//           "data.delivered.value",
+//           "data.data.dataMovto"
+//         ],
+//         "hasValues": [
+//           {
+//             "property": "data.data.dataMovto",
+//             "value": "{{input.body.data.dataMovto}}"
+//           },
+//           {
+//             "property": "data.fowordedValueo",
+//             "value": "1"
+//           }
+//         ]
+//       }
+//     }
+//   ]
+// }

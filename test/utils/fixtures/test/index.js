@@ -8,14 +8,26 @@ module.exports = (data) => {
   const test = {
     description: obj.description || chance.paragraph({ sentences: 1 }),
     filters: obj.filters || {},
-    when: obj.when || 'at 08:00 pm',
     input: {
-      method: obj.method || 'post',
-      url: obj.url || chance.url(),
-      headers: obj.headers || [],
-      authorization: obj.authorization,
-      body: obj.body || {},
+      request: {
+        method: obj.method || 'post',
+        url: obj.url || chance.url(),
+        headers: obj.headers || [],
+        authorization: obj.authorization,
+        body: obj.body || {},
+      },
+      asserts: {
+        hasProperties: ['teste', 'teste2'],
+      },
     },
+    expected: [{
+      identifyFields: {
+        name: obj.identifyFieldsName || chance.paragraph({ sentences: 1 }),
+      },
+      asserts: {
+        hasProperties: ['teste', 'teste2'],
+      },
+    }],
   };
 
   return test;

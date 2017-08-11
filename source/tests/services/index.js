@@ -5,4 +5,4 @@ const findTests = require('./find-tests');
 module.exports = {
   createTest,
   findTests,
-}
+};

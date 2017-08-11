@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "mocha": "./node_modules/mocha/bin/mocha",
-    "eslint": "eslint lib/* test/*.js test/**/* index.js",
+    "eslint": "eslint source/* test/*.js test/**/* index.js",
     "start": "node index.js",
     "coverage": "istanbul cover --print both _mocha -- -R spec",
     "test": "npm run eslint && npm run coverage"

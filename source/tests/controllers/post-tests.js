@@ -1,9 +1,8 @@
 
 const services = require('../services');
-const executionServices = require('../../executions/services');
 
 module.exports = (req, res) => {
-  services.createTest(req.body, (err, resCreate) => {
+  services.createTest(req.body, (err) => {
     if (err) {
       res.sendStatus(500);
     } else {
