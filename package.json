@@ -13,7 +13,6 @@
   "author": "Marcus Costa",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^4.1.0",
     "chance": "^1.0.10",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
@@ -26,9 +25,11 @@
   "dependencies": {
     "async": "^2.5.0",
     "body-parser": "^1.17.2",
+    "chai": "^4.1.0",
     "compression": "^1.6.2",
     "express": "^4.15.3",
     "later": "^1.2.0",
+    "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "mongodb": "^2.2.30",
     "nconf": "^0.8.4",

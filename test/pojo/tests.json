@@ -39,24 +39,22 @@
 //         "value": "request.data._id"
 //       }
 //     ],
-//     "expected": {
-//       "asserts": {
-//         "hasProperties": [
-//           "data.fowordedValue",
-//           "data.delivered.value",
-//           "data.data.dataMovto"
-//         ],
-//         "hasValues": [
-//           {
-//             "property": "data.data.dataMovto",
-//             "value": "{{input.body.data.dataMovto}}"
-//           },
-//           {
-//             "property": "data.fowordedValueo",
-//             "value": 1
-//           }
-//         ]
-//       }
+//     "asserts": {
+//       "hasProperties": [
+//         "data.fowordedValue",
+//         "data.delivered.value",
+//         "data.data.dataMovto"
+//       ],
+//       "hasValues": [
+//         {
+//           "property": "data.data.dataMovto",
+//           "value": "{{input.body.data.dataMovto}}"
+//         },
+//         {
+//           "property": "data.fowordedValueo",
+//           "value": 1
+//         }
+//       ]
 //     }
 //   }
 // }

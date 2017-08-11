@@ -9,6 +9,13 @@ module.exports = (test, next) => {
     (callback) => {
       services.sendRequest(testObj.input.request, callback);
     },
+    (requestResult, callback) => {
+      const hasError = services.executeAsserts(testObj.input.asserts, requestResult);
+      if (hasError) {
+        return callback(hasError);
+      }
+      callback();
+    },
   ], (err, result) => {
     if (err) {
       logger.error('Não foi possível executar o test: %j o problema encontrado foi: %s', testObj, err);
