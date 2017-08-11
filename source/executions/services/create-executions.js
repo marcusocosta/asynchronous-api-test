@@ -1,4 +1,5 @@
 const applyFields = require('./apply-fields');
+const createSatus = require('./create-status');
 const uuidv4 = require('uuid/v4');
 
 module.exports = (test, requestResult) => {
@@ -14,6 +15,7 @@ module.exports = (test, requestResult) => {
       identifyFields: applyFields(exp.identifyFields, requestResult),
       asserts: exp.asserts,
       requestInfo: requestResult,
+      status: createSatus('created', null),
     }));
   }
   return null;
