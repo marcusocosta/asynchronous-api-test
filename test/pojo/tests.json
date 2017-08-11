@@ -48,7 +48,7 @@
         },
         {
           "property": "data.fowordedValueo",
-          "value": 1
+          "value": "1"
         }
       ]
     }
@@ -95,7 +95,7 @@
           },
           {
             "property": "data.fowordedValueo",
-            "value": 1
+            "value": "1"
           }
         ]
       }

@@ -5,13 +5,10 @@
     "description",
     "filters",
     "input",
-    "when"
+    "expected"
   ],
   "properties": {
     "description": {
-      "type": "string"
-    },
-    "when": {
       "type": "string"
     },
     "filters": {
@@ -19,42 +16,10 @@
     },
     "input": {
       "required": [
-        "method",
-        "url"
+        "request"
       ],
       "properties": {
-        "method": {
-          "enum": [
-            "get",
-            "post",
-            "delete"
-          ]
-        },
-        "url": {
-          "type": "string"
-        },
-        "headers": {
-          "type": "array"
-        },
-        "authorization": {
-          "type": "string"
-        },
-        "body": {
-          "type": "object"
-        }
-      }
-    },
-    "expected": {
-      "type": "array",
-      "required": [
-        "identifyField",
-        "assert"
-      ],
-      "properties": {
-        "identifyField": {
-          "type": "object"
-        },
-        "assert": {
+        "asserts": {
           "type": "object",
           "properties": {
             "hasProperties": {
@@ -62,16 +27,95 @@
             },
             "hasValues": {
               "type": "array",
-              "required": [
-                "property",
-                "value"
-              ],
-              "properties": {
-                "property": {
-                  "type": "string"
-                },
-                "value": {
-                  "type": "string"
+              "items": {
+                "type": "object",
+                "required": [
+                  "property",
+                  "value"
+                ],
+                "properties": {
+                  "property": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": [
+                      "integer",
+                      "string"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "object",
+          "required": [
+            "method",
+            "url",
+            "body"
+          ],
+          "properties": {
+            "method": {
+              "enum": [
+                "get",
+                "post",
+                "delete"
+              ]
+            },
+            "url": {
+              "type": "string"
+            },
+            "headers": {
+              "type": "array"
+            },
+            "authorization": {
+              "type": "string"
+            },
+            "body": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "expected": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "identifyFields",
+          "asserts"
+        ],
+        "properties": {
+          "identifyField": {
+            "type": "object"
+          },
+          "asserts": {
+            "type": "object",
+            "properties": {
+              "hasProperties": {
+                "type": "array"
+              },
+              "hasValues": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "property",
+                    "value"
+                  ],
+                  "properties": {
+                    "property": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": [
+                        "integer",
+                        "string"
+                      ]
+                    }
+                  }
                 }
               }
             }
