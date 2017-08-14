@@ -19,4 +19,10 @@ const logger = new (winston.Logger)({
   ],
 });
 
+logger.stream = {
+  write: (message) => {
+    logger.info(message);
+  },
+};
+
 module.exports = logger;
