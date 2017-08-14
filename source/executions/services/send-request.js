@@ -17,7 +17,7 @@ module.exports = (requestParams, customFields, callback) => {
       logger.error('Não foi possível fazer a requisição: %j', requestConfig);
       return callback(error, null);
     }
-
+    logger.info('Requisição feita com sucesso: %j', requestConfig);
     callback(null, response.body);
   });
 };
