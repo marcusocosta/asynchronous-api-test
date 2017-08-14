@@ -20,7 +20,7 @@ describe('Execution test functional test', () => {
             },
           ],
           authorization: 'bearer cr4ed04gty66ggvvvvvv',
-          data: {
+          body: {
             event: 'bonus-redeemed',
             data: {
               amount: 1,
@@ -58,7 +58,7 @@ describe('Execution test functional test', () => {
             },
           ],
           authorization: 'bearer cr4ed04gty66ggvvvvvv',
-          data: {
+          body: {
             event: 'bonus-redeemed',
             data: {
               amount: 1,
@@ -107,7 +107,7 @@ describe('Execution test functional test', () => {
             },
           ],
           authorization: 'bearer cr4ed04gty66ggvvvvvv',
-          data: {
+          body: {
             event: 'bonus-redeemed',
             data: {
               amount: 1,

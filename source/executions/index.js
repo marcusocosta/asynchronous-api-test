@@ -8,15 +8,20 @@ module.exports = (test, next) => {
 
   async.waterfall([
     (callback) => {
-      services.sendRequest(testObj.input.request, callback);
+      const customFields = services.customTypes(testObj.input.customFields);
+      if (!customFields) {
+        return callback(true);
+      }
+      services.sendRequest(testObj.input.request, customFields, (err, requestResult) => {
+        callback(err, requestResult, customFields);
+      });
     },
-    (requestResult, callback) => {
+    (requestResult, customFields, callback) => {
       const hasError = services.executeAsserts(testObj.input.asserts, requestResult);
-      const executions = services.createExecutions(testObj, requestResult);
+      const executions = services.createExecutions(testObj, requestResult, customFields);
       if (hasError) {
         return callback(hasError);
       }
-
       if (executions && executions.length > 0) {
         executionModels.insert(executions, (err) => {
           if (err) {

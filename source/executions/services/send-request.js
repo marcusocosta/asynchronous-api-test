@@ -1,13 +1,14 @@
 const request = require('request');
 const logger = require('../../commons/logger');
+const applyFields = require('./apply-fields');
 
-module.exports = (requestParams, callback) => {
+module.exports = (requestParams, customFields, callback) => {
   const requestConfig = {
     uri: requestParams.uri,
     method: requestParams.method,
     headers: requestParams.headers,
     authorization: requestParams.authorization,
-    body: requestParams.body,
+    body: applyFields(requestParams.body, customFields),
     json: true,
   };
 

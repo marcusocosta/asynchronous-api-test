@@ -18,7 +18,7 @@ describe('Send request unit test', () => {
         },
       ],
       authorization: 'bearer cr4ed04gty66ggvvvvvv',
-      data: {
+      body: {
         event: 'bonus-redeemed',
         data: {
           amount: 1,
@@ -34,7 +34,7 @@ describe('Send request unit test', () => {
       .post('/experiences/casa-venda-os-novos-produtos/triggers')
       .reply(200, { requestId: '11587425896654' });
 
-    sendRequest(request, (err, res) => {
+    sendRequest(request, [], (err, res) => {
       assert.isNull(err);
       assert.isNotNull(res);
       assert.equal('11587425896654', res.requestId);
@@ -53,7 +53,7 @@ describe('Send request unit test', () => {
         },
       ],
       authorization: 'bearer cr4ed04gty66ggvvvvvv',
-      data: {
+      body: {
         event: 'bonus-redeemed',
         data: {
           amount: 1,
@@ -69,7 +69,7 @@ describe('Send request unit test', () => {
       .post('/experiences/casa-venda-os-novos-produtos/triggers')
       .replyWithError('timeout');
 
-    sendRequest(request, (err, res) => {
+    sendRequest(request, {}, (err, res) => {
       assert.isNotNull(err);
       assert.isNull(res);
       done();

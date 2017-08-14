@@ -13,7 +13,6 @@
   "author": "Marcus Costa",
   "license": "ISC",
   "devDependencies": {
-    "chance": "^1.0.10",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
@@ -26,6 +25,7 @@
     "async": "^2.5.0",
     "body-parser": "^1.17.2",
     "chai": "^4.1.0",
+    "chance": "^1.0.10",
     "compression": "^1.6.2",
     "express": "^4.15.3",
     "handlebars": "^4.0.10",
