@@ -31,5 +31,7 @@ module.exports = (customFields) => {
     logger.error('Erro ao geraros campos dinâmicos');
     return undefined;
   }
+
+  logger.info('Variáveis customizadas criadas.');
   return fields;
 };
