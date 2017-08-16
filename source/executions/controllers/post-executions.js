@@ -14,9 +14,8 @@ module.exports = (req, res) => {
       }
       async.each(tests, (test, callback) => {
         processExecution(test, callback);
-      }, () => {
-        res.sendStatus(201);
-      });
+      }, () => { });
+      res.sendStatus(201);
     }
   });
 };
