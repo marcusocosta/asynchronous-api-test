@@ -28,7 +28,7 @@ module.exports = (customFields) => {
       });
     }
   } catch (error) {
-    logger.error('Erro ao geraros campos dinâmicos');
+    logger.error('Erro ao gerar os campos dinâmicos');
     return undefined;
   }
 

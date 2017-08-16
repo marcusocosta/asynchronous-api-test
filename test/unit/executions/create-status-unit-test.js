@@ -16,7 +16,7 @@ describe('Create status unit test', () => {
       date: '2017-08-11T21:20:44.758Z',
       trace: [],
     };
-    const newStatus = createStatus('execution', status);
+    const newStatus = createStatus('execution', undefined, status);
     assert.equal(newStatus.lastStatus, 'execution');
     assert.isNotNull(newStatus.date);
     assert.isArray(newStatus.trace);
@@ -29,7 +29,7 @@ describe('Create status unit test', () => {
       date: '2017-08-11T21:20:44.758Z',
       trace: [{ status: 'created', date: '2017-08-11T21:20:44.758Z' }],
     };
-    const newStatus = createStatus('finish', status);
+    const newStatus = createStatus('finish', 'mensagem de erro', status);
     assert.equal(newStatus.lastStatus, 'finish');
     assert.isNotNull(newStatus.date);
     assert.isArray(newStatus.trace);

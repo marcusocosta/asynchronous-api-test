@@ -16,7 +16,7 @@ module.exports = (test, requestResult, customFields) => {
       identifyFields: applyFields(exp.identifyFields, requestResult),
       asserts: exp.asserts,
       requestInfo: requestResult,
-      status: createSatus('created', null),
+      status: createSatus('created', undefined, null),
     }));
   }
   return null;

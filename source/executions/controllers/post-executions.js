@@ -16,7 +16,7 @@ module.exports = (req, res) => {
         execution(test, callback);
       }, (err) => {
         if (err) {
-          return res.sendStatus(500);
+          return res.status(500).send(err);
         }
         res.sendStatus(201);
       });

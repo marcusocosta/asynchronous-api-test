@@ -40,7 +40,7 @@ describe('Execution test functional test', () => {
 
     execution(test, (err, res) => {
       assert.isNotNull(err);
-      assert.isNull(res);
+      assert.isUndefined(res);
       done();
     });
   });
@@ -84,7 +84,7 @@ describe('Execution test functional test', () => {
 
     execution(test, (err, res) => {
       assert.isNotNull(err);
-      assert.isNull(res);
+      assert.isUndefined(res);
       done();
     });
   });
