@@ -14,10 +14,7 @@ module.exports = (req, res) => {
       }
       async.each(tests, (test, callback) => {
         execution(test, callback);
-      }, (err) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
+      }, () => {
         res.sendStatus(201);
       });
     }
