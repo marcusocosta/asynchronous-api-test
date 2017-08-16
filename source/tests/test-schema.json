@@ -89,7 +89,7 @@
         ],
         "properties": {
           "identifyField": {
-            "type": "object"
+            "type": "string"
           },
           "asserts": {
             "type": "object",
