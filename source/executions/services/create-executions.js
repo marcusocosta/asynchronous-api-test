@@ -1,5 +1,6 @@
 const applyFields = require('./apply-fields');
 const uuidv4 = require('uuid/v4');
+const merge = require('merge');
 
 module.exports = (test, requestResult, customFields, status) => {
   const executionCode = uuidv4();
@@ -12,8 +13,8 @@ module.exports = (test, requestResult, customFields, status) => {
         testCode: test.code,
         description: test.description,
       },
-      identifyFields: applyFields(exp.identifyFields, requestResult),
-      asserts: exp.asserts,
+      identifyFields: applyFields(exp.identifyFields, merge(requestResult, customFields)),
+      asserts: applyFields(exp.asserts, merge(requestResult, customFields)),
       requestInfo: requestResult,
       status,
     }));

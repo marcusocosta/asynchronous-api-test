@@ -22,7 +22,7 @@ const findAndModify = (query, executionCode, callback) => {
       },
     },
     {
-      new: true,
+      remove: true,
     }, (err, results) => {
       if (err) {
         logger.error('Error by finding results');

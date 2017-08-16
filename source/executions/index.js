@@ -6,13 +6,13 @@ const logger = require('../commons/logger');
 const processCallbackExecution = (executions) => {
   async.each(executions, (execution, callback) => {
     const queryFindResult = execution.identifyFields;
-    queryFindResult.resultStatus = 'created';
     resultServices.findAndModifyResults(queryFindResult, execution.code,
-      (errFindResult, results) => {
-        if (results) {
-          const hasError = executionServices.executeAsserts(execution.asserts, results);
+      (errFindResult, result) => {
+        if (result) {
+          const hasError = executionServices.executeAsserts(execution.asserts, result);
           executionServices.updateExecutions(
             { _id: execution._id }, {
+              result,
               status:
               executionServices.createStatus(
                 hasError ? 'error' : 'success', hasError, execution.status),
@@ -32,7 +32,7 @@ const start = () => {
       }
       processCallbackExecution(executions);
     });
-  }, 1000);
+  }, 10000);
 };
 
 module.exports = {

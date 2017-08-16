@@ -31,6 +31,7 @@
     "handlebars": "^4.0.10",
     "later": "^1.2.0",
     "lodash": "^4.17.4",
+    "merge": "^1.2.0",
     "moment": "^2.18.1",
     "mongodb": "^2.2.30",
     "morgan": "^1.8.2",
