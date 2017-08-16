@@ -1,6 +1,6 @@
 const async = require('async');
 const testServices = require('../../tests/services');
-const execution = require('../index');
+const processExecution = require('../process-execution');
 
 module.exports = (req, res) => {
   const query = { filters: req.query };
@@ -13,7 +13,7 @@ module.exports = (req, res) => {
         return res.sendStatus(404);
       }
       async.each(tests, (test, callback) => {
-        execution(test, callback);
+        processExecution(test, callback);
       }, () => {
         res.sendStatus(201);
       });

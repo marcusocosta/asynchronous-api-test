@@ -12,17 +12,27 @@ const insert = (result, callback) => {
   });
 };
 
-const find = (query, callback) => {
-  db.getCollection('results').find(query).toArray((err, results) => {
-    if (err) {
-      logger.error('Error by finding results');
-    }
+const findAndModify = (query, executionCode, callback) => {
+  db.getCollection('results').findAndModify(
+    query,
+    [['_id', 'asc']],
+    {
+      $set: {
+        executionCode, resultStatus: 'closed',
+      },
+    },
+    {
+      new: true,
+    }, (err, results) => {
+      if (err) {
+        logger.error('Error by finding results');
+      }
 
-    callback(err, results);
-  });
+      callback(err, results.value);
+    });
 };
 
 module.exports = {
   insert,
-  find,
+  findAndModify,
 };

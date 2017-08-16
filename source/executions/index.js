@@ -1,46 +1,40 @@
 const async = require('async');
-const services = require('./services');
+const executionServices = require('./services');
+const resultServices = require('../results/services');
 const logger = require('../commons/logger');
-const executionModels = require('./execution-models');
 
-module.exports = (test, next) => {
-  const testObj = test;
-
-  async.waterfall([
-    (callback) => {
-      const customFields = services.customTypes(testObj.input.customFields);
-      if (!customFields) {
-        return callback('Não foi possível criar os campos customizados.');
-      }
-      services.sendRequest(testObj.input.request, customFields, (err, requestResult) => {
-        callback(err, requestResult, customFields);
+const processCallbackExecution = (executions) => {
+  async.each(executions, (execution, callback) => {
+    const queryFindResult = execution.identifyFields;
+    queryFindResult.resultStatus = 'created';
+    resultServices.findAndModifyResults(queryFindResult, execution.code,
+      (errFindResult, results) => {
+        if (results) {
+          const hasError = executionServices.executeAsserts(execution.asserts, results);
+          executionServices.updateExecutions(
+            { _id: execution._id }, {
+              status:
+              executionServices.createStatus(
+                hasError ? 'error' : 'success', hasError, execution.status),
+            }, () => { });
+        }
       });
-    },
-    (requestResult, customFields, callback) => {
-      const hasError = services.executeAsserts(testObj.input.asserts, requestResult);
-      const executions = services.createExecutions(testObj, requestResult,
-        customFields, services.createStatus('created'));
-      if (hasError) {
-        return callback(hasError);
-      }
-      if (executions && executions.length > 0) {
-        executionModels.insert(executions, (err) => {
-          callback(err, executions);
-        });
-      } else {
-        callback('Não foi possível criar as execuções do test');
-      }
-    },
-  ], (err, result) => {
-    if (err) {
-      logger.error('Não foi possível executar o test: %s o problema encontrado foi: %s', testObj.code, err);
-      delete testObj.expected;
-      const executions = services.createExecutions(testObj, undefined,
-        undefined, services.createStatus('error', err));
-      executionModels.insert(executions, () => { });
-      return next(err);
-    }
-    logger.info('Execução criadas com sucesso: %j', result);
-    next(null, result);
+    callback();
+  }, () => {
   });
+};
+
+const start = () => {
+  setInterval(() => {
+    executionServices.findExecutions({ 'status.lastStatus': 'created' }, (err, executions) => {
+      if (err) {
+        logger.error('Falha ao buscar as execuções na base de dados.');
+      }
+      processCallbackExecution(executions);
+    });
+  }, 1000);
+};
+
+module.exports = {
+  start,
 };

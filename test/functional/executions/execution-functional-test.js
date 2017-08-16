@@ -1,7 +1,7 @@
 
 const assert = require('chai').assert;
 const nock = require('nock');
-const execution = require('../../../source/executions');
+const execution = require('../../../source/executions/process-execution');
 
 describe('Execution test functional test', () => {
   afterEach(() => {

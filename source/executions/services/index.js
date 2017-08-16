@@ -3,6 +3,8 @@ const executeAsserts = require('./execute-asserts');
 const createExecutions = require('./create-executions');
 const customTypes = require('./custom-types');
 const createStatus = require('./create-status');
+const findExecutions = require('./find-executions');
+const updateExecutions = require('./update-executions');
 
 module.exports = {
   sendRequest,
@@ -10,4 +12,6 @@ module.exports = {
   createExecutions,
   customTypes,
   createStatus,
+  findExecutions,
+  updateExecutions,
 };
