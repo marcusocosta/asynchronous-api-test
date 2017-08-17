@@ -1,4 +1,5 @@
 const async = require('async');
+const conf = require('../commons/conf');
 const executionServices = require('./services');
 const resultServices = require('../results/services');
 const logger = require('../commons/logger');
@@ -30,9 +31,10 @@ const start = () => {
       if (err) {
         logger.error('Falha ao buscar as execuções na base de dados.');
       }
+      logger.info('Iniciado processo para validação dos callbacks');
       processCallbackExecution(executions);
     });
-  }, 10000);
+  }, conf.get('TIME_TO_EXECUTION_ASSERTS'));
 };
 
 module.exports = {
