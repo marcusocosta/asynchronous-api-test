@@ -1,6 +1,7 @@
 
 const assert = require('chai').assert;
 const nock = require('nock');
+const uuidv4 = require('uuid/v4');
 const execution = require('../../../source/executions/process-execution');
 
 describe('Execution test functional test', () => {
@@ -38,7 +39,7 @@ describe('Execution test functional test', () => {
       .post('/experiences/casa-venda-os-novos-produtos/triggers')
       .replyWithError('timeout');
 
-    execution(test, (err, res) => {
+    execution(test, uuidv4(), (err, res) => {
       assert.isNotNull(err);
       assert.isUndefined(res);
       done();
@@ -82,7 +83,7 @@ describe('Execution test functional test', () => {
       .post('/experiences/casa-venda-os-novos-produtos/triggers')
       .reply(200, { triggerId: '3434343434343434' });
 
-    execution(test, (err, res) => {
+    execution(test, uuidv4(), (err, res) => {
       assert.isNotNull(err);
       assert.isUndefined(res);
       done();
@@ -178,7 +179,7 @@ describe('Execution test functional test', () => {
       .post('/experiences/casa-venda-os-novos-produtos/triggers')
       .reply(200, { requestId: '3434343434343434' });
 
-    execution(test, (err, res) => {
+    execution(test, uuidv4(), (err, res) => {
       assert.isNull(err);
       assert.isNotNull(res);
       assert.equal(res.length, 2);

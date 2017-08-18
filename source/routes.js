@@ -9,6 +9,7 @@ const router = new express.Router();
 router.post('/tests', validation.test, testControllers.post);
 router.post('/results', resultControllers.post);
 router.post('/executions', executeControllers.post);
+router.get('/executions/:executionCode', executeControllers.get);
 
 router.all('*', (req, res) => {
   res.status(404).json({ message: 'Recurso não encontrado!' });

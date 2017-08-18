@@ -5,6 +5,8 @@ const customTypes = require('./custom-types');
 const createStatus = require('./create-status');
 const findExecutions = require('./find-executions');
 const updateExecutions = require('./update-executions');
+const executionsHal = require('./executions-hal');
+
 
 module.exports = {
   sendRequest,
@@ -14,4 +16,5 @@ module.exports = {
   createStatus,
   findExecutions,
   updateExecutions,
+  executionsHal,
 };

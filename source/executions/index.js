@@ -16,7 +16,7 @@ const processCallbackExecution = (executions) => {
               result,
               status:
               executionServices.createStatus(
-                hasError ? 'error' : 'success', hasError, execution.status),
+                hasError ? 'failed' : 'success', hasError, execution.status),
             }, () => { });
         }
       });
@@ -27,7 +27,7 @@ const processCallbackExecution = (executions) => {
 
 const start = () => {
   setInterval(() => {
-    executionServices.findExecutions({ 'status.lastStatus': 'created' }, (err, executions) => {
+    executionServices.findExecutions({ 'status.lastStatus': 'waitingForCallbacks' }, (err, executions) => {
       if (err) {
         logger.error('Falha ao buscar as execuções na base de dados.');
       }

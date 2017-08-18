@@ -3,7 +3,7 @@ const services = require('./services');
 const logger = require('../commons/logger');
 const executionModels = require('./execution-models');
 
-module.exports = (test, next) => {
+module.exports = (test, executionCode, next) => {
   const testObj = test;
 
   async.waterfall([
@@ -19,7 +19,7 @@ module.exports = (test, next) => {
     (requestResult, customFields, callback) => {
       const hasError = services.executeAsserts(testObj.input.asserts, requestResult);
       const executions = services.createExecutions(testObj, requestResult,
-        customFields, services.createStatus('created'));
+        customFields, executionCode, services.createStatus('waitingForCallbacks'));
       if (hasError) {
         return callback(hasError);
       }
@@ -36,7 +36,7 @@ module.exports = (test, next) => {
       logger.error('Não foi possível executar o test: %s o problema encontrado foi: %s', testObj.code, err);
       delete testObj.expected;
       const executions = services.createExecutions(testObj, undefined,
-        undefined, services.createStatus('error', err));
+        undefined, executionCode, services.createStatus('failed', err));
       executionModels.insert(executions, () => { });
       return next(err);
     }

@@ -2,11 +2,12 @@ const applyFields = require('./apply-fields');
 const uuidv4 = require('uuid/v4');
 const merge = require('merge');
 
-module.exports = (test, requestResult, customFields, status) => {
-  const executionCode = uuidv4();
+module.exports = (test, requestResult, customFields, executionCode, status) => {
+  const code = uuidv4();
   if (test.expected && test.expected.length > 0) {
     return test.expected.map(exp => ({
-      code: executionCode,
+      code,
+      executionCode,
       filters: test.filters,
       customFields,
       test: {

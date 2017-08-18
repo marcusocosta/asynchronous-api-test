@@ -1,9 +1,11 @@
 const async = require('async');
+const uuidv4 = require('uuid/v4');
 const testServices = require('../../tests/services');
 const processExecution = require('../process-execution');
 
 module.exports = (req, res) => {
   const query = { filters: req.query };
+  const executionCode = uuidv4();
 
   testServices.findTests(query, (errFind, tests) => {
     if (errFind) {
@@ -13,9 +15,9 @@ module.exports = (req, res) => {
         return res.sendStatus(404);
       }
       async.each(tests, (test, callback) => {
-        processExecution(test, callback);
+        processExecution(test, executionCode, callback);
       }, () => { });
-      res.sendStatus(201);
+      res.status(201).send(executionCode);
     }
   });
 };
